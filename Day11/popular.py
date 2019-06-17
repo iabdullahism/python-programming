@@ -42,8 +42,9 @@ Code Challenge ( Bar Plot )
           popularity.append(item[1])
                  
 """
-i=0
 import csv
+import matplotlib.pyplot as plt
+
 lang_dict={}
 top_lang=[]
 vote=[]
@@ -61,8 +62,29 @@ with open("bardata.csv") as file:
 
 top_language=sorted(lang_dict.items(), key= lambda x:x[1])
 
-for record in top_language:
-    top_lang.append(record[0])
-    vote.append(int(record[1]))
+i=len(top_language)-10
+
+for p in top_language[i:]:
+    top_lang.append(p[0])
+    vote.append(p[1])
+#make a range index list to display language
+index=[]
+k=0
+for i in range(len(top_lang)):
+    index.append(k)
+    k=k+1
     
+plt.bar(index, vote)
+plt.xlabel('programming language', fontsize=10)
+plt.ylabel('rank and votes', fontsize=10)
+plt.xticks(index, top_lang, fontsize=10, rotation=45)
+plt.title('Top 10 programming language')
+plt.show()
+
+
+
+
+
+
+
     
