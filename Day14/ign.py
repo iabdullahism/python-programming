@@ -68,7 +68,10 @@ xbox_one_filter= df[(df['score'] > 7) &  (df['platform'] == 'Xbox One' )]
 
           
 #xbox_one_filter[['score','platform','release_year']]
-
+"""
+p.groupby('release_year')['platform'].value_counts()
+this is my own approach
+"""
 frequeny_xbox_one=xbox_one_filter.groupby(['release_year','platform']).apply(lambda x: len(x))
 
 frequeny_xbox_one_list=list(frequeny_xbox_one.values)

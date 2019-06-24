@@ -62,8 +62,10 @@ print("2.Total charges for international calls=",total_intl_charge)
 
 """3. Predict the state having highest night call
  minutes for churned customer
-
 """
+day_charge= df[df['churn_binary']==1].sort_values('total night minutes')
+day_charge.max()
+
 
 """
 4. Visualize -
@@ -81,6 +83,15 @@ intl_call = df[df['churn_binary'] == 1 ][['total intl calls','churn_binary']]
 sum_intl_call=sum(intl_call.iloc[:, 0])
 print("4.a.most popular call of churned users is daya calls=",sum_day_call)
 
+"""
+my approch
+
+df.groupby('churn_binary')['total day calls'].sum()
+df.groupby('churn_binary')['total eve calls'].sum()
+df.groupby('churn_binary')['total night calls'].sum()
+df.groupby('churn_binary')['total intl calls'].sum()
+
+"""
 """
     b. the minimum charges among all call type among churned user
 """
@@ -124,3 +135,16 @@ area_code_record=df.groupby(['area code','international plan']).apply(lambda x: 
 #for divide the data among male survivde/male dead and female servived/dead
 q=list(area_code_record)
 print("7. 415-area code the international plan is most availed",q[3])
+
+
+
+
+
+df.groupby('area code')['international plan'].value_counts()
+
+
+""""
+new logics
+1-  
+p=df.groupby(['voice_binary','international_binary'])['churn_binary'].value_counts()
+"""

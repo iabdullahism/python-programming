@@ -609,7 +609,7 @@ missing_data.head(20)
 """
 
 # mark zero values as missing or NaN
-df['salary'] = df['salary'].replace(0, np.NaN)
+df['salary'] = df['salary'].replace(np.NaN,0)
 
 
 df.info()
@@ -797,7 +797,11 @@ min_salary = np.min(prof_data['salary'])
 # First Finding the mean of the salries according to the different discipline 
 a = data['salary'][data['discipline'] == 'A'].mean()
 b = data['salary'][data['discipline'] == 'B'].mean()
-    
+ """
+ p=df.groupby(df['discipline'] == 'A')['salary'].mean()
+this is mine approch (rahul) and take value who is positive
+ """
+
 # Filling the mean salaries for the different categories of discipline
 data['salary'][data['discipline'] == 'A'] = data['salary'].fillna(a)
 data['salary'][data['discipline'] == 'B'] = data['salary'].fillna(b)

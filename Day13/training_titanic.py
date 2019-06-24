@@ -101,5 +101,26 @@ titanic_data['age>18']=titanic_data['Age'].map(lambda x: 0 if x<18 else 1)
 
 
 
+""""
+this is my approch
+2-
+child_save=df[(df['Age']<=20) &(df['Survived']==1)]
+child_group=list(child_save['Age'].value_counts())
+sum1=sum(child_group)
+print("save child",sum1)
 
 
+young=df[((df['Age']>20) &(df['Age']<=40)) &(df['Survived']==1)]
+young_group=list(young['Age'].value_counts())
+sum2=sum(young_group)
+print("save young",sum2)
+
+old=df[(df['Age']>40)&(df['Survived']==1)]
+old_group=list(old['Age'].value_counts())
+sum3=sum(old_group)
+print("save old",sum3)
+"""
+
+"""
+3 df["child"]=df['Age'].map(lambda x: 1 if x<18 else 0)
+"""
